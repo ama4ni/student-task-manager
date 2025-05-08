@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Task Manager</title>
+  <link rel="stylesheet" href="styles/mobile.css" />
+  <link rel="stylesheet" href="styles/desktop.css" media="only screen and (min-width : 720px)" />
+</head>
+<body>
+  <header>
+    Student Task Manager
+    <button class="back-button" onclick="window.location.href='student.html'">back</button>
+  </header>
+  <main>
+    <section>
+      <h2>Contact admin</h2>
+      <form id="contactForm">
+        <div>
+          <label for="yourName">Name:</label>
+          <input
+            type="text"
+            id="yourName"
+            name="yourName"
+            placeholder="Please Add Your Name"
+          />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email Address"
+          />
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea
+            name="message"
+            id="message"
+            placeholder="Your Message"
+          ></textarea>
+        </div>            
+        <div class="submitContainer">
+          <input type="submit" value="Send" />
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const message = document.getElementById("message").value.trim();
+      
+      if (message === "") {
+        alert("Please enter a message before submitting.");
+        return;
+      }
+  
+      alert("Your message has been sent!");
+      this.reset();
+    });
+  </script>
+  
+</body>
+</html>

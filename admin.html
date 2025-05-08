@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Task Manager</title>
+  <link rel="stylesheet" href="styles/mobile.css" />
+  <link rel="stylesheet" href="styles/desktop.css" media="only screen and (min-width : 720px)" />
+</head>
+<body>
+
+  <header>
+    <span>Student Task Manager - Admin</span>
+    <button class="logout-button" onclick="window.location.href='index.html'">Logout</button>
+  </header>
+
+  <section class="admin-section">
+    <h2>Registered Users</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Bob Smith</td><td>pass313</td><td>bob.smith@example.com</td></tr>
+        <tr><td>2</td><td>Charlie Brown</td><td>pass631</td><td>charlie.brown@example.com</td></tr>
+        <tr><td>3</td><td>David Lee</td><td>pass101</td><td>david.lee@example.com</td></tr>
+        <tr><td>4</td><td>Eve Wilson</td><td>pass777</td><td>eve.wilson@example.com</td></tr>
+        <tr><td>5</td><td>Frank Garcia</td><td>pass238</td><td>frank.garcia@example.com</td></tr>
+        <tr><td>6</td><td>Grace Rodriguez</td><td>pass736</td><td>grace.rodriguez@example.com</td></tr>
+        <tr><td>7</td><td>Henry Martinez</td><td>pass789</td><td>henry.martinez@example.com</td></tr>
+        <tr><td>8</td><td>Isabella Anderson</td><td>pass856</td><td>isabella.anderson@example.com</td></tr>
+        <tr><td>9</td><td>Jack Thomas</td><td>pass456</td><td>jack.thomas@example.com</td></tr>
+        <tr><td>10</td><td>Karen Jackson</td><td>pass234</td><td>karen.jackson@example.com</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="admin-section">
+    <h2>Post Announcement</h2>
+    <form class="announcement-form" onsubmit="submitAnnouncement(); return false;">
+      <textarea placeholder="Write your announcement here..."></textarea><br>
+      <button type="submit">Post</button>
+    </form>
+    <div id="announcement-feedback" style="color: green; margin-top: 10px;"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025</p>
+  </footer>
+
+  <script>
+    function submitAnnouncement() {
+      const textarea = document.querySelector('.announcement-form textarea');
+      const feedback = document.getElementById('announcement-feedback');
+      const announcement = textarea.value.trim();
+
+      if (announcement === "") {
+        feedback.style.color = 'red';
+        feedback.textContent = "Announcement cannot be empty.";
+        return;
+      }
+      
+      console.log("Announcement posted:", announcement);
+      feedback.style.color = 'green';
+      feedback.textContent = "Announcement posted successfully!";
+      textarea.value = "";
+    }
+  </script>
+
+</body>
+</html>
+

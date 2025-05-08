@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up page</title>
+  <link rel="stylesheet" href="styles/mobile.css" />
+  <link rel="stylesheet" href="styles/desktop.css" media="only screen and (min-width : 720px)" />
+</head>
+<body>
+
+  <header>Student Task Manager</header>
+
+  <main>
+    <div class="form-container">
+      <form id="signUpForm">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" placeholder="Username" required />
+        <input type="email" id="signupEmail" placeholder="Email" required />
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <input type="password" id="signupConfirm" placeholder="Confirm Password" required />
+        <button type="submit">Sign Up</button>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("signUpForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("signupUsername").value;
+      const email = document.getElementById("signupEmail").value;
+      const pw = document.getElementById("signupPassword").value;
+      const confirmPw = document.getElementById("signupConfirm").value;
+
+      if (pw !== confirmPw) {
+        alert("Passwords do not match!");
+      } else {
+        alert("Sign-up successful!");
+        window.location.href = "student.html";
+      }
+    });
+  </script>
+
+</body>
+<footer>
+  <p>&copy; 2025</p>
+</footer>
+</html>
+

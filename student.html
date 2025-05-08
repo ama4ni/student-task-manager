@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Task Manager</title>
+    <link rel="stylesheet" href="styles/mobile.css" />
+    <link rel="stylesheet" href="styles/desktop.css" media="only screen and (min-width : 720px)" />
+</head>
+<body>
+    <header>
+        Student Task Manager
+        <button class="logout-button" onclick="window.location.href='index.html'">Logout</button>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar"></div>
+                <p>Student001</p>
+                <button>Manage Account</button>
+                <button class="button" onclick="window.location.href='contact.html'">Contact Admin</button>
+            </div>
+            <div class="message-board">
+                <h3>Announcement Board</h3>
+                <div class="messages">
+                    <div class="announcement">
+                        <p>From: Admin</p>
+                        <p>Hello new user, create tasks to organise your days and contact admin for any issues.</p>
+                    </div>
+                    <div class="announcement">
+                        <p>From: Admin</p>
+                        <p>Don't forget to check off completed tasks regularly!</p>
+                    </div>
+                    <div class="announcement">
+                        <p>From: Admin</p>
+                        <p>Weekly maintenance occurs every Friday at 8 PM. Save your work.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="main-content">
+          <div class="task-section">
+            <div class="task-list-area">
+              <h2>Tasks:</h2>
+        
+              <div class="task-buttons">
+                <button onclick="addTask()">ADD</button>
+                <button onclick="deleteTask()">Delete</button>
+                <button onclick="editTask()">Edit</button>
+              </div>
+              <div class="task-box">
+                <ul id="task-list">
+                </ul>
+              </div>
+               </div>
+          </div>
+        </main>
+    </div>
+    <script>
+        function addTask() {
+            const taskList = document.getElementById('task-list');
+            let taskText = prompt("Enter new task:");
+
+            // Validate input is not empty or whitespace
+            if (taskText && taskText.trim() !== "") {
+                const li = document.createElement('li');
+                li.innerHTML = `<input type="checkbox"> ${taskText.trim()}`;
+                taskList.appendChild(li);
+            } else {
+                alert("Task cannot be empty.");
+            }
+        }
+
+        function deleteTask() {
+            const taskList = document.getElementById('task-list');
+            const items = taskList.querySelectorAll('li input:checked');
+            items.forEach(input => input.parentElement.remove());
+        }
+
+        function editTask() {
+            const taskList = document.getElementById('task-list');
+            const items = taskList.querySelectorAll('li input:checked');
+            if (items.length !== 1) {
+                alert("Select exactly one task to edit.");
+                return;
+            }
+            const li = items[0].parentElement;
+            let newText = prompt("Edit task:", li.textContent.trim());
+
+            if (newText && newText.trim() !== "") {
+                li.innerHTML = `<input type="checkbox"> ${newText.trim()}`;
+            } else {
+                alert("Task cannot be empty.");
+            }
+        }
+    </script>
+</body>
+<footer>
+</footer>
+</html>
